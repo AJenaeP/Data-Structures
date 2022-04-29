@@ -20,7 +20,7 @@ public class LinkedList {
 	    Advantages: Resizable, Easy to insert and delete
 	    Disadvantages: No random access, Extra memory space for pointer is required for each element */
 	  
-Node head;
+		Node head;
 	   
 	   /* Class for each individual Node*/ 
 	   class Node{
@@ -32,7 +32,83 @@ Node head;
 	       next = null; //initialed to null
 	     }
 	   }
-
+	   
+	  /* this method adds a new node to the beginning of the list */
+	  public void push(int data) { 
+		  Node newNode = new Node(data); //creates a new node
+		  
+		  if(head==null) {
+			  head = newNode; //if list is empty, new node is automatically head;
+			  return;
+		  } else {
+			  newNode.next = head; //the new nodes' next value is pointed to head;
+			  head = newNode; //head becomes the new node
+		  }
+	  }
+	  
+	  /* inserts a new node after a specific data point */
+	  public void insertAfter(int key, int data){ 
+		  Node temp = head; //creates a temp node
+		  Node newNode = new Node(data); //creates node to be inserted
+		  
+		  while((temp != null) && (temp.data != key)) { //traverse the list until the node with the key data is found
+			  temp = temp.next;
+		  }
+		  if(temp.data == key) { //if node with key data is found
+			  temp.next = newNode;
+			  newNode.next = temp.next.next;
+		  }	  
+	  }
+	  
+	  /* inserts a new node at the end of the list */ /* for a singular list */
+	  public void insertEnd(int data) { 
+		  Node newNode = new Node(data); //creates a new node
+		  
+		  if(head == null) { //if head is empty , new node becomes head
+			  head = new Node(data);
+			  return;
+		  }
+		  Node temp = new Node(data); //creates a temp node
+		  
+		  while(temp.next != null) { //traverse linked list
+			  temp = temp.next;
+		  }
+		  
+		  temp.next = newNode; // once end of linked list is found add the new node
+	  }
+	  
+	  /* deletes the first occurrence of a given key */
+	  public void delete(int key) {
+		  Node temp = head; //creates a temp node
+		  
+		  if((temp != null) && (temp.data == key)){ //if head is equal to the key
+			  head = temp.next; //delete the node at head and move head to the right
+			  return;
+		  }
+		  
+		  while((temp != null) && (temp.next.data != key)){ //traverse list //while temp isnt null and the next value doesnt equal key
+			  temp = temp.next;
+		  }
+		  
+		  if(temp == null){ //if the value of node isnt in the list
+			  return;
+		  }
+		  
+		  temp.next = temp.next.next; //if the key is in the next node next.next is the next value of temp
+	  }
+	  
+	  /* prints each data point in the linked list */ 
+	  public void print() { 
+		  Node temp = head;
+		  
+		  while(temp != null) {
+			  System.out.println(temp.data + " "); //print each data in the list
+			  temp = temp.next;
+		  }
+	  }
+	  
+	 
+	  
 	  public static void main(String[] args){
 	    LinkedList ll = new LinkedList();
 
