@@ -68,7 +68,7 @@ public class LinkedList {
 			  head = new Node(data);
 			  return;
 		  }
-		  Node temp = new Node(data); //creates a temp node
+		  Node temp = head; //creates a temp node
 		  
 		  while(temp.next != null) { //traverse linked list
 			  temp = temp.next;
@@ -102,17 +102,40 @@ public class LinkedList {
 		  Node temp = head;
 		  
 		  while(temp != null) {
-			  System.out.println(temp.data + " "); //print each data in the list
+			  System.out.print(temp.data + " "); //print each data in the list
 			  temp = temp.next;
 		  }
 	  }
 	  
-	 
+	  /* reverse a linked list */
+	  public void reverse(){
+	    Node prev = null;
+	    Node current = head;
+	    Node next = head;
+
+	    while(current != null){
+	      next = current.next;
+	      current.next = prev;
+	      prev = current;
+	      current = next;
+	    }
+	    head.next = null;
+	    head = prev;
+	  }
 	  
 	  public static void main(String[] args){
 	    LinkedList ll = new LinkedList();
 
+	    ll.push(2);
+	    ll.insertEnd(5);
+	    ll.insertEnd(7);
+	    ll.insertEnd(9);
+
+	    ll.print();
 	    
+	    ll.reverse();
+	    System.out.println();
+	    ll.print();
 	    
 	  }
 }
