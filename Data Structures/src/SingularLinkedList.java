@@ -1,5 +1,5 @@
 
-public class LinkedList {
+public class SingularLinkedList {
 	/** A linked list is a list of nodes that are linked together
 	    Can be singular, double or circular
 	    Singular:
@@ -124,7 +124,7 @@ public class LinkedList {
 	  }
 	  
 	  public static void main(String[] args){
-	    LinkedList ll = new LinkedList();
+	    SingularLinkedList ll = new SingularLinkedList();
 
 	    ll.push(2);
 	    ll.insertEnd(5);
