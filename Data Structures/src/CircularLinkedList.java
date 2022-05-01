@@ -28,6 +28,15 @@ public class CircularLinkedList {
 	   }
 	   
 	   public void push(int data) {
+		   if(head == null) { //if list is empty
+			   head = new Node(data);
+			   return;
+		   }
+		   
+		   Node temp = new Node(data);
+		   
+		   temp.next = head;
+		   
 		   
 	   }
 }
