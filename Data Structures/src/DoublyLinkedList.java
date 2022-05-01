@@ -23,7 +23,7 @@ public class DoublyLinkedList {
 	     Node(int data){ //Creates a new node
 	       this.data = data;
 	       next = null; //initialed to null
-	       prev = null;
+	       prev = null; //initiated to null
 	     }
 	   }
 	   
@@ -79,29 +79,49 @@ public class DoublyLinkedList {
 		   temp.prev = end; //make end node as previous of temp node
 	   }
 	   
+	   /* prints each data point in the linked list */ 
 	   public void print() {
-		   Node temp = head;
-		   while(temp != null) {
+		   Node temp = head; //creates a pointer node
+		   while(temp != null) { //traverse through a linked list
 			   System.out.print(temp.data + " ");
 			   temp = temp.next;
 		   }
 	   }
 	   
+	   /* deletes the first occurrence of a given key */
 	   public void delete(int key) {
-		   Node temp = head;
+		   Node temp = head; //creates a pointer node
+		   
 		   if(temp == null) {
 			   return;
 		   }
 		   
-		   while((temp.next != null) || (temp.data != key)) {
+		   while((temp.next != null) && (temp.data != key)) { //traverse through the list until key is found
 			   temp = temp.next;
 		   }
 		   
-		   if(temp.data == key) {
+		   if(temp.data == key) { //if key if found , change the next value for the previous node and change the previous node for the next node
 			   temp.prev.next = temp.next;
 			   temp.next.prev = temp.prev;
 		   }
 	   }
+	   
+	   /* reverse a linked list */
+	   public void reverse(){
+		    Node temp = null;
+		    Node current = head;
+
+		    while(current != null){ //swap next and previous node for all nodes
+			    temp = current.prev;
+			    current.prev = current.next;
+			    current.next = temp;
+			    current = current.prev;
+		    }
+		    
+		    if(temp != null) { //before changing head, for the case of an empty list
+		    	head = temp.prev;
+		    }
+		 }
 	  
 	   public static void main(String[] args){
 		    DoublyLinkedList ll = new DoublyLinkedList();
@@ -111,10 +131,10 @@ public class DoublyLinkedList {
 		    ll.insertEnd(7);
 		    ll.insertEnd(9);
 		    ll.insertEnd(11);
-		    //System.out.println(ll.getLength());
+		    
 		    ll.print();
 		    ll.delete(7);
-		    //ll.reverse();
+		    ll.reverse();
 		    System.out.println();
 		    ll.print();
 		    

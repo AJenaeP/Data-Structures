@@ -2,7 +2,6 @@
 public class CircularLinkedList {
 	/** A linked list is a list of nodes that are linked together
     Can be singular, double or circular
-    
       
     Circular:  
     		   <prev-      <prev-      <prev-
@@ -24,7 +23,11 @@ public class CircularLinkedList {
 	     Node(int data){ //Creates a new node
 	       this.data = data;
 	       next = null; //initialed to null
-	       prev = null;
+	       prev = null; //initiated to null
 	     }
+	   }
+	   
+	   public void push(int data) {
+		   
 	   }
 }

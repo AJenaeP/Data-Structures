@@ -3,6 +3,7 @@ public class SingularLinkedList {
 	/** A linked list is a list of nodes that are linked together
 	    Can be singular, double or circular
 	    Singular:
+	    
 	    [data/head]-next>[data]-next>[data]-next>[data]->null
 	      (Node)          (Node)      (Node)      (Node)
 	      
