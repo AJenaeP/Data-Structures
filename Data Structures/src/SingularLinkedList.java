@@ -123,6 +123,16 @@ public class SingularLinkedList {
 	    head = prev;
 	  }
 	  
+	  public int getLength() {
+		  Node temp = head;
+		  int length = 0;
+		  while(temp != null) {
+			  length++;
+			  temp = temp.next;
+		  }
+		  return length;
+	  }
+	  
 	  public static void main(String[] args){
 	    SingularLinkedList ll = new SingularLinkedList();
 
@@ -130,7 +140,7 @@ public class SingularLinkedList {
 	    ll.insertEnd(5);
 	    ll.insertEnd(7);
 	    ll.insertEnd(9);
-
+	    System.out.println(ll.getLength());
 	    ll.print();
 	    
 	    ll.reverse();
